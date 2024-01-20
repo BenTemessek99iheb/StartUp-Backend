@@ -26,10 +26,10 @@ public class Establishment implements Serializable {
     private String description;
     private String logo;
     private String activitySector;
+    private Integer rate;
 
     @OneToMany(mappedBy = "establishment")
     private Set<ReservationEstablishment> reservationEstablishments;
-
 
 
 }

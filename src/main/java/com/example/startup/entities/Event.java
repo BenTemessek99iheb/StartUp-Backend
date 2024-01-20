@@ -3,6 +3,7 @@ package com.example.startup.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -22,7 +23,6 @@ public class Event implements Serializable {
 
     @Id
     private UUID id;
-
     private String title;
     private String description;
     private Date dateDebut;
@@ -41,7 +41,7 @@ public class Event implements Serializable {
     private String contact;
     private Boolean alcohol;
 
-    @ManyToMany(mappedBy = "events")
-    private Set<User> users;
+    @OneToMany(mappedBy = "event")
+    private Set<ReservationEvent> reservationEvents;
 
 }
