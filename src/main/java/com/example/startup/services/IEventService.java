@@ -1,7 +1,6 @@
 package com.example.startup.services;
 
 import com.example.startup.dto.EventDTO;
-import com.example.startup.dto.UserDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -16,7 +15,7 @@ public interface IEventService {
     Page<EventDTO> retrieveEvents(Pageable pageable);
     public List<EventDTO> retrieveAllEvents();
 
-    EventDTO updateEvent(EventDTO eventDto);
+    EventDTO updateEvent(EventDTO eventDto, UUID id);
 
 
     EventDTO retrieveEventById(UUID id);
