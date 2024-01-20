@@ -31,5 +31,8 @@ public class Establishment implements Serializable {
     @OneToMany(mappedBy = "establishment")
     private Set<ReservationEstablishment> reservationEstablishments;
 
+    @OneToMany(mappedBy = "establishment", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Event> events;
+
 
 }

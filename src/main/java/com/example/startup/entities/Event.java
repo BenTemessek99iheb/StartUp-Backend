@@ -1,9 +1,6 @@
 package com.example.startup.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -35,7 +32,7 @@ public class Event implements Serializable {
     private double price;
     private String duration;
     private Integer capacity;
-    private String attendees;
+    private Integer attendees;
     private String socialMedia;
     private String website;
     private String contact;
@@ -44,4 +41,10 @@ public class Event implements Serializable {
     @OneToMany(mappedBy = "event")
     private Set<ReservationEvent> reservationEvents;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "establishment_id")
+    private Establishment establishment;
+
+
 }
+
