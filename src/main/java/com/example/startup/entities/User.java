@@ -14,6 +14,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "Client")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class User implements Serializable {
 
