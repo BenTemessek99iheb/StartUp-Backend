@@ -1,5 +1,6 @@
 package com.example.startup.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
@@ -13,7 +14,6 @@ import java.util.UUID;
 
 public class UserDTO implements Serializable {
 
-    @Id
     private UUID id;
     private String firstName;
     private String lastName;
@@ -25,12 +25,10 @@ public class UserDTO implements Serializable {
     private String address;
     private String city;
     private String country;
-
+    @JsonIgnore
     private Set<ReservationEventDTO> reservationEvents;
-
+    @JsonIgnore
     private Set<ReservationEstablishmentDTO> reservationEstablishments;
-
-
 
 
 }

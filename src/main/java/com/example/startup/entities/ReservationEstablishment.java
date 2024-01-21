@@ -1,12 +1,10 @@
 package com.example.startup.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -21,10 +19,16 @@ import java.util.UUID;
 
 public class ReservationEstablishment implements Serializable {
     @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
     private UUID id;
     private Date date;
     private DateTimeLiteralExpression.DateTime time;
     private String status;
+    private Integer numberOfPersons;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

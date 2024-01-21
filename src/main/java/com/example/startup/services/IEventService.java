@@ -13,10 +13,10 @@ public interface IEventService {
     void removeEvent(UUID id);
 
     Page<EventDTO> retrieveEvents(Pageable pageable);
+
     public List<EventDTO> retrieveAllEvents();
 
     EventDTO updateEvent(EventDTO eventDto, UUID id);
-
 
     EventDTO retrieveEventById(UUID id);
 

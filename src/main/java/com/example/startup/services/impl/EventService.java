@@ -79,11 +79,13 @@ public class EventService implements IEventService {
 
     @Override
     public EventDTO retrieveEventById(UUID id) {
+
         return ieventRepo.findById(id).map(eventMapper::toDto).orElseThrow();
     }
 
     @Override
     public Long countEvents() {
+
         return null;
     }
 }

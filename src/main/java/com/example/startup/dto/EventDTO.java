@@ -1,5 +1,6 @@
 package com.example.startup.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -10,10 +11,8 @@ import java.util.Set;
 import java.util.UUID;
 
 @Data
-
 public class EventDTO implements Serializable {
 
-    @Id
     private UUID id;
     private String title;
     private String description;
@@ -32,6 +31,7 @@ public class EventDTO implements Serializable {
     private String website;
     private String contact;
     private Boolean alcohol;
+    @JsonIgnore
     private Set<ReservationEventDTO> reservationEvents;
     private UUID establishmentId;
 

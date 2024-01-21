@@ -13,10 +13,10 @@ public interface IEstablishmentService {
     void removeEstablishment(UUID id);
 
     Page<EstablishmentDTO> retrieveEstablishments(Pageable pageable);
+
     public List<EstablishmentDTO> retrieveAllEstablishments();
 
     EstablishmentDTO updateEstablishment(EstablishmentDTO establishmentDTO);
-
 
     EstablishmentDTO retrieveEstablishmentById(UUID id);
 
