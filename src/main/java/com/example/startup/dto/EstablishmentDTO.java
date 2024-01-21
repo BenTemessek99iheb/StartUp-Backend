@@ -1,5 +1,6 @@
 package com.example.startup.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -13,7 +14,7 @@ import java.util.UUID;
 
 @Data
 public class EstablishmentDTO implements Serializable {
-    @Id
+
     private UUID id;
     private String name;
     private String address;
@@ -25,11 +26,9 @@ public class EstablishmentDTO implements Serializable {
     private String logo;
     private String activitySector;
     private Integer rate;
-
-    @OneToMany(mappedBy = "establishment")
+    @JsonIgnore
     private Set<ReservationEstablishmentDTO> reservationEstablishments;
-
-    @OneToMany(mappedBy = "establishment", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private Set<EventDTO> events;
 
 
