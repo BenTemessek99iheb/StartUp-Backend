@@ -11,9 +11,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Data
-
 public class ReservationEstablishmentDTO implements Serializable {
-    @Id
     private UUID id;
     private Date date;
     private DateTimeLiteralExpression.DateTime time;
