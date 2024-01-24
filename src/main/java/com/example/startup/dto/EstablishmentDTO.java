@@ -1,5 +1,6 @@
 package com.example.startup.dto;
 
+import com.example.startup.entities.Menu;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -30,6 +31,8 @@ public class EstablishmentDTO implements Serializable {
     private Set<ReservationEstablishmentDTO> reservationEstablishments;
     @JsonIgnore
     private Set<EventDTO> events;
+
+    private Menu menu;
 
 
 }

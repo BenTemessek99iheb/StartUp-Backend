@@ -15,14 +15,12 @@ import java.util.UUID;
 public class ReservationEventController {
 
     private final IReservationEventService reservationEventService;
-
     @PostMapping
     public ResponseEntity<ReservationEventDTO> createReservationEvent(
             @RequestParam UUID userId,
             @RequestParam UUID eventId,
             @RequestParam UUID establishmentId,
             @RequestBody ReservationEventDTO reservationEventDTO) {
-
         ReservationEventDTO createdReservationEvent = reservationEventService.createReservationEvent(userId, establishmentId, eventId, reservationEventDTO);
         return ResponseEntity.ok(createdReservationEvent);
     }
