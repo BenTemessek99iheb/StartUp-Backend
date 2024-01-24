@@ -40,5 +40,6 @@ public class Establishment implements Serializable {
     @OneToMany(mappedBy = "establishment", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Event> events;
 
-
+    @OneToOne(mappedBy = "establishment")
+    private Menu menu;
 }
