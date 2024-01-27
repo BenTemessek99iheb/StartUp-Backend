@@ -14,7 +14,6 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Menu implements Serializable {
 
-
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
