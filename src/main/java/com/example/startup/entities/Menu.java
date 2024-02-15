@@ -2,6 +2,8 @@ package com.example.startup.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -12,6 +14,7 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class Menu implements Serializable {
 
     @Id
@@ -24,7 +27,6 @@ public class Menu implements Serializable {
     private String name;
     private String description;
     private String image;
-    private double price;
 
     @ManyToMany
     @JoinTable(
