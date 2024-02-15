@@ -9,8 +9,7 @@ import java.util.UUID;
 
 @Entity
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 
 public class Item implements Serializable  {

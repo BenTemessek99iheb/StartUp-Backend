@@ -4,9 +4,10 @@ import com.example.startup.entities.Category;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.Data;
 
 import java.util.UUID;
-
+@Data
 public class ItemDTO {
     private UUID id;
     private String name;
