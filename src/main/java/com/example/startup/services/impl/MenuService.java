@@ -1,8 +1,11 @@
 package com.example.startup.services.impl;
 
+import com.example.startup.dto.ItemDTO;
 import com.example.startup.dto.MenuDTO;
 import com.example.startup.entities.Category;
+import com.example.startup.entities.Item;
 import com.example.startup.entities.Menu;
+import com.example.startup.mapper.ItemMapper;
 import com.example.startup.mapper.MenuMapper;
 import com.example.startup.repositories.CategoryRepo;
 import com.example.startup.repositories.MenuRepo;
@@ -24,6 +27,7 @@ public class MenuService implements IMenuService {
     private final CategoryRepo categoryRepository;
 
     private final MenuMapper menuMapper;
+    private final ItemMapper itemMapper;
 
     public MenuDTO addMenu(MenuDTO menuDTO) {
         Menu menu = menuMapper.toModel(menuDTO);
@@ -70,6 +74,11 @@ public class MenuService implements IMenuService {
         menu.getCategories().remove(category);
         Menu updatedMenu = menuRepository.save(menu);
         return menuMapper.toDto(updatedMenu);
+    }
+
+    public List<ItemDTO> ListOfItems(UUID menuId) {
+        List<Item> items = menuRepository.findById(menuId).orElseThrow(() -> new ResourceNotFoundException("Menu not found")).getItems();
+        return items.stream().map(itemMapper::toDto).collect(Collectors.toList());
     }
 
 }

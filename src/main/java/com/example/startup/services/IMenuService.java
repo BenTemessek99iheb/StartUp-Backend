@@ -1,5 +1,6 @@
 package com.example.startup.services;
 
+import com.example.startup.dto.ItemDTO;
 import com.example.startup.dto.MenuDTO;
 
 import java.util.List;
@@ -19,5 +20,5 @@ public interface IMenuService {
     public MenuDTO addCategoryToMenu(UUID menuId, UUID categoryId);
 
     public MenuDTO removeCategoryFromMenu(UUID menuId, UUID categoryId);
-
+    public List<ItemDTO> ListOfItems(UUID menuId) ;
 }
