@@ -50,10 +50,42 @@ public class SwaggerUIConfig {
     }
 
     @Bean
-    public GroupedOpenApi eventsPublicApi() {
+    public GroupedOpenApi establishmentPublicApi() {
+        return GroupedOpenApi.builder()
+                .group("Everything Management API")
+                .pathsToMatch("/**")
+                .build();
+
+    }
+    @Bean
+    public GroupedOpenApi MenuPublicApi() {
+        return GroupedOpenApi.builder()
+                .group("Menu Management API")
+                .pathsToMatch("/api/v1/menu/**")
+                .build();
+
+    }
+    @Bean
+    public GroupedOpenApi eventPublicApi() {
+        return GroupedOpenApi.builder()
+                .group("Events Management API")
+                .pathsToMatch("/api/v1/events/**")
+                .build();
+
+    }
+    @Bean
+    public GroupedOpenApi reservEstabPublicApi() {
+        return GroupedOpenApi.builder()
+                .group("reservation-establishments Management API")
+                .pathsToMatch("/api/v1/reservation-establishments/**")
+                .build();
+
+    }
+    @Bean
+    public GroupedOpenApi reservationEventPublicApi() {
         return GroupedOpenApi.builder()
                 .group("Only Blocs Management API")
-                .pathsToMatch("/**")
+                .pathsToMatch("/api/v1/reservation-events/**")
                 .build();
 
     }
