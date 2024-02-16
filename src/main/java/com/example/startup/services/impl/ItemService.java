@@ -8,6 +8,7 @@ import com.example.startup.repositories.ItemRepo;
 import com.example.startup.repositories.MenuRepo;
 import com.example.startup.services.IItemService;
 import com.example.startup.util.exception.ResourceNotFoundException;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,29 +16,29 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
-
+@AllArgsConstructor
 public class ItemService implements IItemService {
-    public static MenuRepo menuRepository;
-    public static ItemRepo itemRepository;
-    public static ItemMapper itemMapper;
+    private final ItemRepo itemRepository;
+    private final ItemMapper itemMapper;
+    private final MenuRepo menuRepo;
 
-    public List<ItemDTO> getItemsByMenuId(UUID menuId) {
-        Menu menu = menuRepository.findById(menuId)
+
+ //   public ItemDTO addItem(ItemDTO itemDTO, UUID menuId) {
+  //      Item item = itemMapper.toModel(itemDTO);
+   //     Item savedItem = itemRepository.save(item);
+   //     return itemMapper.toDto(savedItem);
+    //}
+
+    public ItemDTO addItemToMenu(UUID menuId, ItemDTO itemDTO) {
+        Menu menu = menuRepo.findById(menuId)
                 .orElseThrow(() -> new ResourceNotFoundException("Menu not found"));
 
-        // Assuming that you have a method in your repository to find items by menu
-        // and you also have an ItemMapper to convert entities to DTOs
-        List<Item> items = itemRepository.findItemsByMenuId(menuId);
-        return items.stream()
-                .map(itemMapper::toDto)
-                .collect(Collectors.toList());
-    }
-
-    public ItemDTO addItem(ItemDTO itemDTO) {
         Item item = itemMapper.toModel(itemDTO);
+        item.setMenuId(menu.getId());
         Item savedItem = itemRepository.save(item);
         return itemMapper.toDto(savedItem);
     }
+
 
     public ItemDTO getItemById(UUID id) {
         Item item = itemRepository.findById(id)
@@ -69,5 +70,14 @@ public class ItemService implements IItemService {
         List<Item> items = itemRepository.findAll();
         return items.stream().map(itemMapper::toDto).collect(Collectors.toList());
     }
+
+    public List<ItemDTO> getItemsByMenuId(UUID menuId) {
+        List<Item> items = itemRepository.findItemsByMenuId(menuId);
+        return items.stream()
+                .map(itemMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+
 
 }

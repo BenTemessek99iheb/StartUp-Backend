@@ -30,4 +30,6 @@ public class Item implements Serializable  {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    private UUID menuId;
+
 }
