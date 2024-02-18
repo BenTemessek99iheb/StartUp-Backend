@@ -15,11 +15,10 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/events")
 public class EventController {
-
     private final IEventService eventService;
-
     @Autowired
     public EventController(IEventService eventService) {
+
         this.eventService = eventService;
     }
 
@@ -49,7 +48,7 @@ public class EventController {
 
     @PutMapping("/{id}")
     public ResponseEntity<EventDTO> updateEvent(@RequestBody EventDTO eventDTO, UUID id) {
-        EventDTO updatedEvent = eventService.updateEvent(eventDTO,id);
+        EventDTO updatedEvent = eventService.updateEvent(eventDTO, id);
         return ResponseEntity.ok(updatedEvent);
     }
 
