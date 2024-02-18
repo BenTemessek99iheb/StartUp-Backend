@@ -20,5 +20,5 @@ public interface IMenuService {
     public MenuDTO addCategoryToMenu(UUID menuId, UUID categoryId);
 
     public MenuDTO removeCategoryFromMenu(UUID menuId, UUID categoryId);
-    public List<ItemDTO> ListOfItems(UUID menuId) ;
+    //  public List<ItemDTO> ListOfItems(UUID menuId) ;
 }

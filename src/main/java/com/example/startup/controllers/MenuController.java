@@ -53,12 +53,6 @@ public class MenuController {
         return ResponseEntity.ok(menus);
     }
 
-    @GetMapping("/items-per-menu/{id}")
-    public ResponseEntity<List<ItemDTO>> getListOfItems(@RequestParam UUID menuId) {
-        List<ItemDTO> items = menuService.ListOfItems(menuId);
-        return ResponseEntity.ok(items);
-    }
-
     @PostMapping("/categories")
     public ResponseEntity<CategoryDTO> addCategory(@RequestBody CategoryDTO categoryDTO) {
         CategoryDTO createdCategory = categoryService.addCategory(categoryDTO);
@@ -141,6 +135,5 @@ public class MenuController {
         List<ItemDTO> itemDTOs = itemService.getItemsByMenuId(menuId);
         return ResponseEntity.ok(itemDTOs);
     }
-
 
 }

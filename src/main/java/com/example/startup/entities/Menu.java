@@ -3,12 +3,13 @@ package com.example.startup.entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -34,17 +35,13 @@ public class Menu implements Serializable {
             joinColumns = @JoinColumn(name = "menu_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
+
     private List<Category> categories;
-
-    @ManyToMany
-    @JoinTable(
-            name = "menu_item",
-            joinColumns = @JoinColumn(name = "menu_id"),
-            inverseJoinColumns = @JoinColumn(name = "item_id")
-    )
-    private List<Item> items;
-
     @OneToOne
     @JoinColumn(name = "establishment_id", referencedColumnName = "id")
     private Establishment establishment;
+
+    @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Menu_item> menuItems = new HashSet<>();
+
 }

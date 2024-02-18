@@ -76,9 +76,6 @@ public class MenuService implements IMenuService {
         return menuMapper.toDto(updatedMenu);
     }
 
-    public List<ItemDTO> ListOfItems(UUID menuId) {
-        List<Item> items = menuRepository.findById(menuId).orElseThrow(() -> new ResourceNotFoundException("Menu not found")).getItems();
-        return items.stream().map(itemMapper::toDto).collect(Collectors.toList());
-    }
+
 
 }
