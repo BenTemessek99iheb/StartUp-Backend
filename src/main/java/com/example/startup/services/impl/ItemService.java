@@ -3,6 +3,7 @@ package com.example.startup.services.impl;
 import com.example.startup.dto.ItemDTO;
 import com.example.startup.entities.Item;
 import com.example.startup.entities.Menu;
+import com.example.startup.entities.Menu_item;
 import com.example.startup.mapper.ItemMapper;
 import com.example.startup.repositories.ItemRepo;
 import com.example.startup.repositories.MenuRepo;
@@ -23,22 +24,15 @@ public class ItemService implements IItemService {
     private final MenuRepo menuRepo;
 
 
- //   public ItemDTO addItem(ItemDTO itemDTO, UUID menuId) {
-  //      Item item = itemMapper.toModel(itemDTO);
-   //     Item savedItem = itemRepository.save(item);
-   //     return itemMapper.toDto(savedItem);
-    //}
-
     public ItemDTO addItemToMenu(UUID menuId, ItemDTO itemDTO) {
         Menu menu = menuRepo.findById(menuId)
                 .orElseThrow(() -> new ResourceNotFoundException("Menu not found"));
 
         Item item = itemMapper.toModel(itemDTO);
-        item.setMenuId(menu.getId());
+        item.setMenuId(menuId);
         Item savedItem = itemRepository.save(item);
         return itemMapper.toDto(savedItem);
     }
-
 
     public ItemDTO getItemById(UUID id) {
         Item item = itemRepository.findById(id)
@@ -75,9 +69,6 @@ public class ItemService implements IItemService {
         List<Item> items = itemRepository.findItemsByMenuId(menuId);
         return items.stream()
                 .map(itemMapper::toDto)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()) ;
     }
-
-
-
 }

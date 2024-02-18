@@ -16,5 +16,7 @@ public class ItemDTO {
     private double price;
     @JsonIgnore
     private Category category;
+    private UUID menuId;
+
 
 }
